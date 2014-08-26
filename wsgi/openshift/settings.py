@@ -18,6 +18,11 @@ if 'OPENSHIFT_REPO_DIR' in os.environ:
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
+if ON_OPENSHIFT:
+    DATA_DIR = os.environ.get('OPENSHIFT_DATA_DIR')
+else:
+    DATA_DIR = os.path.join(BASE_DIR, '..', 'data')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -96,20 +101,12 @@ TEMPLATE_DIRS = (
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-if ON_OPENSHIFT:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(os.environ['OPENSHIFT_DATA_DIR'], 'db.sqlite3'),
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(DATA_DIR, 'db.sqlite3'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -126,7 +123,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
+PROJECT_ROOT = os.path.join(BASE_DIR, '..')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
