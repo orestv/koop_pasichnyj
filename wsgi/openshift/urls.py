@@ -2,13 +2,13 @@ from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
 
-from django.conf import settings
+import django.views.generic.base as django_views
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'views.home', name='home'),
+    url(r'^$', django_views.TemplateView.as_view(template_name='koop/main.html'), name='home'),
     # url(r'^$', 'openshift.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     
