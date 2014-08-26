@@ -14,5 +14,4 @@ dist/
 build/
 .idea/
 *.sqlite3
-static/
 data/
