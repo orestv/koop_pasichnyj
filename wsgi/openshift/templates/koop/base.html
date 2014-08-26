@@ -1,14 +1,27 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head lang="uk-UA">
     <meta charset="UTF-8">
     <title>Кооператив "Пасічний"</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'koop/base.css' %}"/>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
 
-{% block body %}
+<div class="panel body-wrapper">
+    {% block body %}
 
-{% endblock %}
+    {% endblock %}
+</div>
 
 </body>
 </html>
