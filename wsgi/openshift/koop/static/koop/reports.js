@@ -37,9 +37,10 @@
     $('#fileUploadForm input[type="submit"]').button('reset');
     $('#uploadProgressOuter').hide();
     $('#uploadSuccessAlert').show();
-    return setTimeout((function() {
+    setTimeout((function() {
       return $('#uploadSuccessAlert').fadeOut();
     }), 1500);
+    return $('#reportsTree').jstree('refresh');
   };
 
   upload_progress = function(event, position, total, percentComplete) {

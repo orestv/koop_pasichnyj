@@ -28,6 +28,7 @@ upload_success = (responseText, statusText, xhr, form) ->
   $('#uploadProgressOuter').hide()
   $('#uploadSuccessAlert').show()
   setTimeout((() -> $('#uploadSuccessAlert').fadeOut()), 1500)
+  $('#reportsTree').jstree('refresh')
 
 upload_progress = (event, position, total, percentComplete) ->
   console.log percentComplete
