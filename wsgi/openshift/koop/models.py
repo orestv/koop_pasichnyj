@@ -25,5 +25,9 @@ class Report(models.Model):
     file = django_models.FileField(verbose_name=u'Звіт',
                                    upload_to='uploads')
 
+    def delete(self, using=None):
+        self.file.delete(False)
+        super(Report, self).delete(using)
+
     def __str__(self):
         return self.filename

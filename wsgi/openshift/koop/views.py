@@ -12,7 +12,7 @@ from koop.models import Folder
 class UploadView(CreateView):
     form_class = koop_forms.UploadForm
     template_name = 'koop/main.html'
-    success_url = '/'
+    success_url = '/reports'
 
 
 class MainView(TemplateView):
