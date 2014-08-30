@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Hidden
+import crispy_forms.layout as crispy_layout
 import django.forms as django_forms
 import koop.models as koop_models
 
@@ -14,7 +14,12 @@ class UploadForm(django_forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(UploadForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('upload', 'Upload', css_class='btn btn-large'))
+        self.helper.form_id = 'fileUploadForm'
+        self.helper.layout = crispy_layout.Layout(
+            'file',
+            crispy_layout.Hidden('folder_id', None, id='fileUploadFolderId'),
+            crispy_layout.Submit('upload', 'Завантажити', css_class='btn btn-large')
+        )
 
     def save(self, commit=True):
         upload = super(UploadForm, self).save(commit=False)
@@ -34,7 +39,7 @@ class FolderForm(django_forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(FolderForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.layout = Layout(
+        self.helper.layout = crispy_layout.Layout(
             'name',
-            Submit('save', 'Зберегти'),
+            crispy_layout.Submit('save', 'Зберегти'),
         )

@@ -27,6 +27,7 @@ update_folder_form = (folderNode) ->
   $('#reportFormsContainer').hide()
   $('#folderFormsContainer').show()
   $('#folderName').text(folderNode.text)
+  $('#fileUploadForm input[name="folder_id"]').val(folderNode.id)
 
 setup_tree = () ->
   treeContainer = $('#reportsTree')

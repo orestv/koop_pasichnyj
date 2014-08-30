@@ -37,7 +37,8 @@
   update_folder_form = function(folderNode) {
     $('#reportFormsContainer').hide();
     $('#folderFormsContainer').show();
-    return $('#folderName').text(folderNode.text);
+    $('#folderName').text(folderNode.text);
+    return $('#fileUploadForm input[name="folder_id"]').val(folderNode.id);
   };
 
   setup_tree = function() {
