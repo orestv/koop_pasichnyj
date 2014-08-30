@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import FormView, CreateView
 
 import koop.forms as koop_forms
-from koop.forms import FolderForm
+from koop.forms import FolderForm, UploadForm
 from koop.models import Folder
 
 
@@ -23,7 +23,10 @@ class MainView(TemplateView):
         root_folder, created = Folder.objects.get_or_create(parent=None)
         context['root'] = root_folder
 
-        folder_form = FolderForm(instance=root_folder)
+        folder_form = FolderForm()
+        upload_form = UploadForm()
+
         context['folder_form'] = folder_form
+        context['upload_form'] = upload_form
 
         return context

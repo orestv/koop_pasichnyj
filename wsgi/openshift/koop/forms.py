@@ -36,5 +36,5 @@ class FolderForm(django_forms.ModelForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             'name',
-            Hidden('parent_folder_id', kwargs['instance'].id, id='parent_folder_id'),
+            Submit('save', 'Зберегти'),
         )

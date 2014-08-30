@@ -5,6 +5,13 @@ document_loaded = () ->
   $('#folderFormsContainer').hide()
   $('#reportFormsContainer').hide()
   setup_tree()
+  enable_tabs()
+
+enable_tabs = () ->
+  $('#folderTabList a').click((e) =>
+    e.preventDefault()
+    $(this).tab('show')
+  )
 
 node_selected = (e, data) ->
   if data.node.type == NODETYPE_FOLDER
