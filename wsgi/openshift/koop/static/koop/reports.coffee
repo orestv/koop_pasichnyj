@@ -1,8 +1,29 @@
+NODETYPE_FOLDER = 'folder'
+NODETYPE_REPORT = 'report'
+
 document_loaded = () ->
+  $('#folderFormsContainer').hide()
+  $('#reportFormsContainer').hide()
   setup_tree()
 
+node_selected = (e, data) ->
+  if data.node.type == NODETYPE_FOLDER
+    update_folder_form(data.node)
+  else if data.node.type == NODETYPE_REPORT
+    update_report_form(data.node)
+
+update_report_form = (reportNode) ->
+  $('#folderFormsContainer').hide()
+  $('#reportFormsContainer').show()
+
+update_folder_form = (folderNode) ->
+  $('#reportFormsContainer').hide()
+  $('#folderFormsContainer').show()
+  $('#panelFormHeader').text(folderNode.text)
+
 setup_tree = () ->
-  $('#reportsTree').jstree(
+  treeContainer = $('#reportsTree')
+  $(treeContainer).jstree(
     core:
       themes:
         variant: 'large'
@@ -12,7 +33,7 @@ setup_tree = () ->
     types:
       folder:
         icon: 'glyphicon glyphicon-folder-open'
-        valid_children: ['folder', 'report']
+        valid_children: [NODETYPE_FOLDER, NODETYPE_REPORT]
       report:
         icon: 'glyphicon glyphicon-file'
         valid_children: []
@@ -21,5 +42,6 @@ setup_tree = () ->
               'types',
     ]
   )
+  $(treeContainer).on('select_node.jstree', node_selected)
 
 $(document).ready(document_loaded)

@@ -27,18 +27,29 @@
 </head>
 {% load report_tags %}
 <body>
-    <div class="container-fluid">
-        <div class="col-xs-5">
-            <div class="panel">
-                <div id="reportsTree">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Звіти</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="col-xs-5">
+                    <div id="reportsTree"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="panel panel-default" id="folderFormsContainer">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="panelFormHeader"></h3>
+                        </div>
+                        <div class="panel-body">
+                            Panel body be here!
+                        </div>
+                    </div>
+                    <div class="panel" id="reportFormsContainer">
+                        Report!
+                    </div>
                 </div>
 
-            </div>
-        </div>
-        <div class="col-xs-6">
-            <div class="panel">
-                {% block body %}
-                {% endblock %}
             </div>
         </div>
     </div>
