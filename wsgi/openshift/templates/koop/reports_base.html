@@ -13,18 +13,32 @@
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="{% static 'koop/tree.css' %}"/>
+    <script src="{% static 'koop/tree.js' %}"></script>
+
     {% block includes %}
 
     {% endblock %}
 
 </head>
+{% load report_tags %}
 <body>
-
-{#<div class="panel body-wrapper">#}
-    {% block body %}
-
-    {% endblock %}
-{#</div>#}
-
+    <div class="container-fluid">
+        <div class="col-xs-5">
+            <div class="panel">
+                <div class="tree">
+                    <ul>
+                        {% folder_tag root %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="panel">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>

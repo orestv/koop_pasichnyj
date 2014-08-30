@@ -1,0 +1,18 @@
+{% load report_tags %}
+
+<li>
+    <span><i class="glyphicon glyphicon-folder-open"></i> {{ folder.name }}</span>
+    <ul>
+    {% for child in folder.children.all %}
+        <li>
+            {% folder_tag child %}
+        </li>
+    {% endfor %}
+    {% for report in folder.reports.all %}
+        <li>
+        <span><i class="glyphicon glyphicon-file"></i> {{ report }}</span>
+        </li>
+    {% endfor %}
+    </ul>
+
+</li>

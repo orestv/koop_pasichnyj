@@ -1,6 +1,28 @@
 {% extends 'koop/base.html' %}
 
+{% load staticfiles %}
+{% block includes %}
+    <link rel="stylesheet" href="{% static 'koop/tree.css' %}"/>
+    <script src="{% static 'koop/tree.js' %}"></script>
+{% endblock %}
+
 {% load crispy_forms_tags %}
 {% block body %}
+
+    <div class="container-fluid">
+        <div class="col-xs-5">
+            <div class="panel">
+                Column 1
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="panel">
+                Column 2
+            </div>
+        </div>
+    </div>
+
+
+
     {% crispy form %}
 {% endblock %}

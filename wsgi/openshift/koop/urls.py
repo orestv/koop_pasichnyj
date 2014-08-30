@@ -6,7 +6,7 @@ import koop.views as koop_views
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', koop_views.UploadView.as_view(), name='home'),
+    url(r'^$', koop_views.MainView.as_view(), name='home'),
     # url(r'^$', 'openshift.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
