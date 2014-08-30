@@ -6,6 +6,8 @@ setup_tree = () ->
     core:
       themes:
         variant: 'large'
+      data:
+        url: '/api/tree'
       multiple: false
     plugins: ['wholerow',]
   )
