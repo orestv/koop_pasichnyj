@@ -9,7 +9,17 @@ setup_tree = () ->
       data:
         url: '/api/tree'
       multiple: false
-    plugins: ['wholerow',]
+    types:
+      folder:
+        icon: 'glyphicon glyphicon-folder-open'
+        valid_children: ['folder', 'report']
+      report:
+        icon: 'glyphicon glyphicon-file'
+        valid_children: []
+    plugins: ['wholerow',
+              'state',
+              'types',
+    ]
   )
 
 $(document).ready(document_loaded)
