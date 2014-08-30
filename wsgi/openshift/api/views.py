@@ -23,12 +23,16 @@ class TreeView(APIView):
         return data
 
     def dump_report(self, report):
-        pass
+        data = {}
+        data['parent'] = str(report.folder_id)
+        data['id'] = 'rpt_{0}'.format(report.id)
+        data['text'] = report.filename
+        data['type'] = 'report'
+        return data
 
     def get(self, *args, **kwargs):
         folder_list = map(self.dump_folder, koop_models.Folder.objects.all())
-        # report_list = map(self.dump_report, koop_models.Report.objects.all())
-        report_list = []
+        report_list = map(self.dump_report, koop_models.Report.objects.all())
 
         data = list(folder_list) + list(report_list)
 
