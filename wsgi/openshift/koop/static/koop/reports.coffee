@@ -19,7 +19,7 @@ update_report_form = (reportNode) ->
 update_folder_form = (folderNode) ->
   $('#reportFormsContainer').hide()
   $('#folderFormsContainer').show()
-  $('#panelFormHeader').text(folderNode.text)
+  $('#folderName').text(folderNode.text)
 
 setup_tree = () ->
   treeContainer = $('#reportsTree')
