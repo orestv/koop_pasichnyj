@@ -41,38 +41,34 @@
                 </div>
 
                 <div class="col-xs-6">
-{#                    <div class="panel panel-default" id="folderFormsContainer">#}
-{#                        <div class="panel-heading">#}
-{#                            <h3 class="panel-title">Папка "<span id="folderName"></span>"</h3>#}
-{#                        </div>#}
-{#                        <div class="panel-body">#}
-                            <ul id="folderTabList" class="nav nav-tabs" role="tablist">
-                                <li class="active">
-                                    <a data-toggle="tab" role="tab" href="#upload">Завантажити звіт</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" role="tab" href="#folder">Змінити папку</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div id="upload" class="tab-pane fade active in">
-                                    {% crispy upload_form %}
-                                    <div id="uploadSuccessAlert" class="alert alert-success" style="display: none">
-                                        Файл успішно завантажено!
-                                    </div>
-                                    <div id="uploadProgressOuter" class="progress">
-                                        <div id="uploadProgressInner" class="progress-bar" role="progressbar" aria-valuenow="60"
-                                             aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                            <span class="sr-only">60% Complete</span>
-                                        </div>
-                                    </div>
+                    <div id="folderFormsContainer">
+                        <ul id="folderTabList" class="nav nav-tabs" role="tablist">
+                            <li class="active">
+                                <a data-toggle="tab" role="tab" href="#upload">Завантажити звіт</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" role="tab" href="#folder">Змінити папку</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="upload" class="tab-pane fade active in">
+                                {% crispy upload_form %}
+                                <div id="uploadSuccessAlert" class="alert alert-success" style="display: none">
+                                    Файл успішно завантажено!
                                 </div>
-                                <div id="folder" class="tab-pane fade">
-                                    {% crispy folder_form %}
+                                <div id="uploadProgressOuter" class="progress">
+                                    <div id="uploadProgressInner" class="progress-bar" role="progressbar"
+                                         aria-valuenow="60"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                        <span class="sr-only">60% Complete</span>
+                                    </div>
                                 </div>
                             </div>
-{#                        </div>#}
-{#                    </div>#}
+                            <div id="folder" class="tab-pane fade">
+                                {% crispy folder_form %}
+                            </div>
+                        </div>
+                    </div>
                     <div class="panel" id="reportFormsContainer">
                         Report!
                     </div>
