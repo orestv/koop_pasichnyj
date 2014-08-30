@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 import django.db.models as django_models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 
 
 class Folder(models.Model):
@@ -25,9 +27,9 @@ class Report(models.Model):
     file = django_models.FileField(verbose_name=u'Звіт',
                                    upload_to='uploads')
 
-    def delete(self, using=None):
-        self.file.delete(False)
-        super(Report, self).delete(using)
+@receiver(post_delete, sender=Report)
+def report_postdelete(sender, instance, *args, **kwargs):
+    instance.file.delete(save=False)
 
     def __str__(self):
         return self.filename
