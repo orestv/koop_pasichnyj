@@ -5,9 +5,32 @@ document_loaded = () ->
   $('#folderFormsContainer').hide()
   $('#reportFormsContainer').hide()
   $('#uploadProgressOuter').hide()
-  setup_tree()
+  $(".modal").on('shown.bs.modal', () ->
+    $(this).find("[autofocus]:first").focus()
+  )
   enable_tabs()
   init_upload_form()
+  init_folder_create_form()
+  setup_tree()
+
+init_folder_create_form = () ->
+  $('#folderCreateForm').ajaxForm(
+      beforeSubmit: folder_create_before_submit
+      success: folder_create_success
+  )
+  $('#folderCreateForm').clearForm()
+  $('#btnFolderCreateForm_Submit').click(() ->
+    $('#folderCreateForm').submit()
+  )
+
+folder_create_before_submit = () ->
+  console.log 'Before submit!'
+
+folder_create_success = () ->
+  console.log 'Submit success!'
+  $('#modalCreateFolder').modal('hide')
+  $('#folderCreateForm').resetForm()
+  $('#reportsTree').jstree('refresh')
 
 init_upload_form = () ->
   $('#fileUploadForm').ajaxForm(
@@ -58,12 +81,12 @@ report_node_selected = (reportNode) ->
 folder_node_selected = (folderNode) ->
   $('#reportFormsContainer').hide()
   $('#folderFormsContainer').show()
-  $('#formCreateFolder input[name="parent"]').val(folderNode.parent)
+  $('#folderCreateForm input[name="parent"]').val(folderNode.id)
   $('#fileUploadFolderId').val(folderNode.id)
-  if folderNode.parent == '#'
-    $('#btnDeleteFolder').attr('disabled', 'disabled')
-  else
-    $('#btnDeleteFolder').removeAttr('disabled')
+#  if folderNode.parent == '#'
+#    $('#btnDeleteFolder').attr('disabled', 'disabled')
+#  else
+#    $('#btnDeleteFolder').removeAttr('disabled')
   $('#folderButtonsFieldset').removeAttr('disabled')
 
 setup_tree = () ->

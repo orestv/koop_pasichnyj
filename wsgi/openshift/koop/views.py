@@ -16,6 +16,12 @@ class UploadView(CreateView):
     success_url = '/reports'
 
 
+class FolderCreateView(CreateView):
+    form_class = koop_forms.FolderForm
+    success_url = '/reports'
+    template_name = 'koop/base.html'
+
+
 class MainView(TemplateView):
     template_name = 'koop/reports_base.html'
 
@@ -27,7 +33,8 @@ class MainView(TemplateView):
         context['root'] = root_folder
 
         create_folder_form = FolderForm(instance=None)
-        create_folder_form.helper.form_id = 'formCreateFolder'
+        create_folder_form.helper.form_id = 'folderCreateForm'
+        create_folder_form.helper.form_action = '/reports/folder'
         upload_form = UploadForm()
 
         context['create_folder_form'] = create_folder_form

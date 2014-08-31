@@ -49,6 +49,6 @@ class FolderForm(django_forms.ModelForm):
         super(FolderForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = crispy_layout.Layout(
-            crispy_layout.Field('name', value=''),
+            crispy_layout.Field('name', value='', autofocus=True),
             crispy_layout.Field('parent', type='hidden'),
         )

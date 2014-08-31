@@ -54,7 +54,14 @@
                     {% crispy create_folder_form %}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="button"
+                           id="btnFolderCreateForm_Submit"
+                           class="btn btn-primary"
+                           value="Створити"/>
+                    <input type="button"
+                           class="btn btn-default"
+                           data-dismiss="modal"
+                           value="Закрити"/>
                 </div>
             </div>
         </div>
@@ -77,10 +84,13 @@
                             </button>
                             <button class="btn btn-primary"
                                     data-toggle="modal"
-                                    data-target="#modalRenameFolder">
+                                    data-target="#modalRenameFolder"
+                                    disabled>
                                 <i class="glyphicon glyphicon-pencil"></i>
                             </button>
-                            <button id="btnDeleteFolder" class="btn btn-danger" disabled>
+                            <button id="btnDeleteFolder"
+                                    class="btn btn-danger"
+                                    disabled>
                                 <i class="glyphicon glyphicon-remove"></i>
                             </button>
                         </fieldset>
