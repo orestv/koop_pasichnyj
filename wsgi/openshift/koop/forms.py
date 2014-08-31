@@ -42,13 +42,13 @@ class FolderForm(django_forms.ModelForm):
         model = koop_models.Folder
         fields = (
             'name',
-            # 'parent',
+            'parent',
         )
 
     def __init__(self, *args, **kwargs):
         super(FolderForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = crispy_layout.Layout(
-            'name',
-            crispy_layout.Submit('save', 'Зберегти'),
+            crispy_layout.Field('name', value=''),
+            crispy_layout.Field('parent', type='hidden'),
         )

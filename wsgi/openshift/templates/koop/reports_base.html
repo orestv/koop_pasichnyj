@@ -44,6 +44,21 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modalCreateFolder">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Створити папку</h4>
+                </div>
+                <div class="modal-body">
+                    {% crispy create_folder_form %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Звіти</h3>
@@ -55,7 +70,9 @@
                     Дії над папкою:
                     <div id="folderButtonsContainer" class="btn-group">
                         <fieldset id="folderButtonsFieldset">
-                            <button class="btn btn-success" disabled>
+                            <button class="btn btn-success"
+                                    data-toggle="modal"
+                                    data-target="#modalCreateFolder">
                                 <i class="glyphicon glyphicon-plus"></i>
                             </button>
                             <button class="btn btn-primary"

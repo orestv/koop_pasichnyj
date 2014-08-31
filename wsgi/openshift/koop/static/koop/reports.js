@@ -72,7 +72,7 @@
   folder_node_selected = function(folderNode) {
     $('#reportFormsContainer').hide();
     $('#folderFormsContainer').show();
-    $('#folderName').text(folderNode.text);
+    $('#formCreateFolder input[name="parent"]').val(folderNode.parent);
     $('#fileUploadFolderId').val(folderNode.id);
     if (folderNode.parent === '#') {
       $('#btnDeleteFolder').attr('disabled', 'disabled');
