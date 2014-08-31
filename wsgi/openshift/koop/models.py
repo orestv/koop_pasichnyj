@@ -7,7 +7,9 @@ from django.dispatch import receiver
 
 
 class Folder(models.Model):
-    name = django_models.CharField(max_length=256, default='/')
+    name = django_models.CharField(max_length=256,
+                                   verbose_name='Назва',
+                                   default='/')
     created_on = django_models.DateTimeField(auto_now_add=True)
     parent = django_models.ForeignKey('self',
                                       related_name='children',
