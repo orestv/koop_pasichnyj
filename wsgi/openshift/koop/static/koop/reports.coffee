@@ -7,6 +7,7 @@ document_loaded = () ->
   $('#uploadProgressOuter').hide()
   $(".modal").on('shown.bs.modal', () ->
     $(this).find("[autofocus]:first").focus()
+    folder_create_name_changed()
   )
   enable_tabs()
   init_upload_form()
@@ -22,6 +23,15 @@ init_folder_create_form = () ->
   $('#btnFolderCreateForm_Submit').click(() ->
     $('#folderCreateForm').submit()
   )
+  $('#folderCreateForm input[name="name"]').on('input', folder_create_name_changed)
+
+folder_create_name_changed = () ->
+  val = $('#folderCreateForm input[name="name"]').val()
+  if val
+    $('#btnFolderCreateForm_Submit').removeAttr('disabled')
+  else
+    $('#btnFolderCreateForm_Submit').attr('disabled', 'disabled')
+
 
 folder_create_before_submit = () ->
   console.log 'Before submit!'
