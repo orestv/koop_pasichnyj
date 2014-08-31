@@ -39,26 +39,32 @@ set_upload_progress_percentage = (percentage) ->
   $('#uploadProgressInner').html("#{percentage}%")
 
 enable_tabs = () ->
-  $('#folderTabList a').click((e) =>
-    e.preventDefault()
-    $(this).tab('show')
-  )
+#  $('#folderTabList a').click((e) =>
+#    e.preventDefault()
+#    $(this).tab('show')
+#  )
 
 node_selected = (e, data) ->
   if data.node.type == NODETYPE_FOLDER
-    update_folder_form(data.node)
+    folder_node_selected(data.node)
   else if data.node.type == NODETYPE_REPORT
-    update_report_form(data.node)
+    report_node_selected(data.node)
 
-update_report_form = (reportNode) ->
+report_node_selected = (reportNode) ->
   $('#folderFormsContainer').hide()
   $('#reportFormsContainer').show()
+  $('#folderButtonsFieldset').attr('disabled', 'disabled')
 
-update_folder_form = (folderNode) ->
+folder_node_selected = (folderNode) ->
   $('#reportFormsContainer').hide()
   $('#folderFormsContainer').show()
   $('#folderName').text(folderNode.text)
   $('#fileUploadFolderId').val(folderNode.id)
+  if folderNode.parent == '#'
+    $('#btnDeleteFolder').attr('disabled', 'disabled')
+  else
+    $('#btnDeleteFolder').removeAttr('disabled')
+  $('#folderButtonsFieldset').removeAttr('disabled')
 
 setup_tree = () ->
   treeContainer = $('#reportsTree')
